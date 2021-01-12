@@ -18,7 +18,6 @@
                 <div
                   v-if="hover && !tokyoGrid"
                   class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
-                  style="writing-mode: vertical-rl; text-orientation: upright; height: 100%;"
                 >
                   TOKYO
                 </div>
@@ -37,7 +36,7 @@
             :key="i"
             link
             :ripple="{ center: true }"
-            @click="showTitleArea(i,'tokyo')"
+            @click="showTitleArea(i)"
           >
             <v-row>
               <v-col>
@@ -68,7 +67,7 @@
                         </v-list-item-content>
                       </v-list-item>
                       <!-- 説明（改行は、改行コードでできる） -->
-                      <div style="font-size: x-large; white-space:pre-wrap; word-wrap:break-word;">{{ item.description }}</div>
+                      <div class="item-description">{{ item.description }}</div>
                     </v-col>
                   </v-row>
                 </div>
@@ -102,7 +101,6 @@
                 <div
                   v-if="hover && !fukuokaGrid"
                   class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
-                  style="writing-mode: vertical-rl; text-orientation: upright; height: 100%;"
                 >
                   FUKUOKA
                 </div>
@@ -121,7 +119,7 @@
             :key="i"
             link
             :ripple="{ center: true }"
-            @click="showTitleArea(i,'fukuoka')"
+            @click="showTitleArea(i)"
           >
             <v-row>
               <v-col>
@@ -152,7 +150,7 @@
                         </v-list-item-content>
                       </v-list-item>
                       <!-- 説明（改行は、改行コードでできる） -->
-                      <div style="font-size: x-large; white-space:pre-wrap; word-wrap:break-word;">{{ item.description }}</div>
+                      <div class="item-description">{{ item.description }}</div>
                     </v-col>
                   </v-row>
                 </div>
@@ -186,7 +184,6 @@
                 <div
                   v-if="hover && !naraGrid"
                   class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
-                  style="writing-mode: vertical-rl; text-orientation: upright; height: 100%;"
                 >
                   NARA
                 </div>
@@ -205,7 +202,7 @@
             :key="i"
             link
             :ripple="{ center: true }"
-            @click="showTitleArea(i,'nara')"
+            @click="showTitleArea(i)"
           >
             <v-row>
               <v-col>
@@ -236,7 +233,7 @@
                         </v-list-item-content>
                       </v-list-item>
                       <!-- 説明（改行は、改行コードでできる） -->
-                      <div style="font-size: x-large; white-space:pre-wrap; word-wrap:break-word;">{{ item.description }}</div>
+                      <div class="item-description">{{ item.description }}</div>
                     </v-col>
                   </v-row>
                 </div>
@@ -386,7 +383,11 @@ export default {
   methods: {
     // 一覧画面表示フラグ設定
     showGridArea (id) {
+      // 一覧画像情報初期化
+      this.items = []
       if (id === 'tokyo') {
+        // 一覧画像情報設定
+        this.items = this.itemsTokyo
         this.tokyoShow = false
         this.tokyoGrid = true
         this.fukuokaShow = false
@@ -394,6 +395,8 @@ export default {
         this.naraShow = false
         this.naraGrid = false
       } else if (id === 'fukuoka') {
+        // 一覧画像情報設定
+        this.items = this.itemsFukuoka
         this.fukuokaShow = false
         this.fukuokaGrid = true
         this.tokyoShow = false
@@ -401,6 +404,8 @@ export default {
         this.naraShow = false
         this.naraGrid = false
       } else if (id === 'nara') {
+        // 一覧画像情報設定
+        this.items = this.itemsNara
         this.naraShow = false
         this.naraGrid = true
         this.tokyoShow = false
@@ -410,17 +415,7 @@ export default {
       }
     },
     // 一覧画像選択時の処理
-    showTitleArea (idx, id) {
-      // 一覧画像情報初期化
-      this.items = []
-      // 各一覧画像情報設定
-      if (id === 'tokyo') {
-        this.items = this.itemsTokyo
-      } else if (id === 'fukuoka') {
-        this.items = this.itemsFukuoka
-      } else if (id === 'nara') {
-        this.items = this.itemsNara
-      }
+    showTitleArea (idx) {
       // 画像情報ステータス変更
       if (this.items[idx].status === false) {
         // 画像詳細表示OFF状態から画像選択、ステータスON
@@ -442,6 +437,9 @@ export default {
   opacity: .5;
   position: absolute;
   width: 100%;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  height: 100%;
 }
 .orange {
   color:orange;
@@ -451,5 +449,10 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.item-description {
+  font-size: x-large;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 </style>
