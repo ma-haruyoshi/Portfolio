@@ -36,49 +36,11 @@
             :key="i"
             link
             :ripple="{ center: true }"
-            @click="showTitleArea(i)"
           >
             <v-row>
               <v-col>
-                <div v-if="item.status">
-                  <!-- 各画像がクリックされた場合 -->
-                  <v-row>
-                    <!-- 左に画像表示 -->
-                    <v-col cols="6">
-                      <v-img
-                        :src="item.src"
-                        height="100%"
-                      />
-                    </v-col>
-                    <!-- 右に概要表示 -->
-                    <v-col>
-                      <v-list-item>
-                        <!-- 丸いところ -->
-                        <v-list-item-avatar color="grey" />
-                        <v-list-item-content>
-                          <!-- タイトル -->
-                          <v-list-item-title class="display-1">
-                            {{ item.title }}
-                          </v-list-item-title>
-                          <!-- 撮影者 -->
-                          <v-list-item-subtitle class="headline">
-                            {{ item.author }}
-                          </v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                      <!-- 説明（改行は、改行コードでできる） -->
-                      <div class="item-description">{{ item.description }}</div>
-                    </v-col>
-                  </v-row>
-                </div>
-                <!-- 各画像がクリックされていない、初期表示 -->
-                <div v-else>
-                  <!-- 横長で画像表示 -->
-                  <v-img
-                    :src="item.src"
-                    height="400"
-                  />
-                </div>
+                <!-- コンポーネントに画像情報渡す -->
+                <ImageContent :content="item" />
               </v-col>
             </v-row>
           </v-card>
@@ -119,49 +81,11 @@
             :key="i"
             link
             :ripple="{ center: true }"
-            @click="showTitleArea(i)"
           >
             <v-row>
               <v-col>
-                <div v-if="item.status">
-                  <!-- 各画像がクリックされた場合 -->
-                  <v-row>
-                    <!-- 左に画像表示 -->
-                    <v-col cols="6">
-                      <v-img
-                        :src="item.src"
-                        height="100%"
-                      />
-                    </v-col>
-                    <!-- 右に概要表示 -->
-                    <v-col>
-                      <v-list-item>
-                        <!-- 丸いところ -->
-                        <v-list-item-avatar color="grey" />
-                        <v-list-item-content>
-                          <!-- タイトル -->
-                          <v-list-item-title class="display-1">
-                            {{ item.title }}
-                          </v-list-item-title>
-                          <!-- 撮影者 -->
-                          <v-list-item-subtitle class="headline">
-                            {{ item.author }}
-                          </v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                      <!-- 説明（改行は、改行コードでできる） -->
-                      <div class="item-description">{{ item.description }}</div>
-                    </v-col>
-                  </v-row>
-                </div>
-                <!-- 各画像がクリックされていない、初期表示 -->
-                <div v-else>
-                  <!-- 横長で画像表示 -->
-                  <v-img
-                    :src="item.src"
-                    height="400"
-                  />
-                </div>
+                <!-- コンポーネントに画像情報渡す -->
+                <ImageContent :content="item" />
               </v-col>
             </v-row>
           </v-card>
@@ -202,49 +126,11 @@
             :key="i"
             link
             :ripple="{ center: true }"
-            @click="showTitleArea(i)"
           >
             <v-row>
               <v-col>
-                <div v-if="item.status">
-                  <!-- 各画像がクリックされた場合 -->
-                  <v-row>
-                    <!-- 左に画像表示 -->
-                    <v-col cols="6">
-                      <v-img
-                        :src="item.src"
-                        height="100%"
-                      />
-                    </v-col>
-                    <!-- 右に概要表示 -->
-                    <v-col>
-                      <v-list-item>
-                        <!-- 丸いところ -->
-                        <v-list-item-avatar color="grey" />
-                        <v-list-item-content>
-                          <!-- タイトル -->
-                          <v-list-item-title class="display-1">
-                            {{ item.title }}
-                          </v-list-item-title>
-                          <!-- 撮影者 -->
-                          <v-list-item-subtitle class="headline">
-                            {{ item.author }}
-                          </v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                      <!-- 説明（改行は、改行コードでできる） -->
-                      <div class="item-description">{{ item.description }}</div>
-                    </v-col>
-                  </v-row>
-                </div>
-                <!-- 各画像がクリックされていない、初期表示 -->
-                <div v-else>
-                  <!-- 横長で画像表示 -->
-                  <v-img
-                    :src="item.src"
-                    height="400"
-                  />
-                </div>
+                <!-- コンポーネントに画像情報渡す -->
+                <ImageContent :content="item" />
               </v-col>
             </v-row>
           </v-card>
@@ -254,7 +140,14 @@
   </v-container>
 </template>
 <script>
+// 画像表示コンポーネント
+import ImageContent from '~/components/ImageContent'
+
 export default {
+  components: {
+    // コンポーネント定義
+    ImageContent
+  },
   transitions: {
     name: 'fade'
   },
@@ -413,17 +306,6 @@ export default {
         this.fukuokaShow = false
         this.fukuokaGrid = false
       }
-    },
-    // 一覧画像選択時の処理
-    showTitleArea (idx) {
-      // 画像情報ステータス変更
-      if (this.items[idx].status === false) {
-        // 画像詳細表示OFF状態から画像選択、ステータスON
-        this.items[idx].status = true
-      } else {
-        // 画像詳細表示ON状態から画像選択、ステータスOFF
-        this.items[idx].status = false
-      }
     }
   }
 }
@@ -449,10 +331,5 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
-}
-.item-description {
-  font-size: x-large;
-  white-space: pre-wrap;
-  word-wrap: break-word;
 }
 </style>

@@ -37,7 +37,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-	'~/plugins/vue-scrollto'
+    '~/plugins/vue-scrollto'
   ],
   /*
   ** Auto import components
@@ -59,7 +59,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     [
-    	'nuxt-fontawesome'
+      'nuxt-fontawesome'
     ]
   ],
   fontawesome: {
