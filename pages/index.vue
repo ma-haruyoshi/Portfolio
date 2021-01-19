@@ -1,151 +1,61 @@
 <template>
   <v-container class="white">
     <v-row no-gutters justify="center">
-      <v-hover v-slot:default="{ hover }">
-        <!-- TOP画面 -->
-        <v-col v-if="tokyoShow">
-          <v-card
-            class="mx-auto"
-            color="white"
-            @click="showGridArea('tokyo')"
-          >
-            <v-img
-              :aspect-ratio="9/16"
-              src="images/tokyotower.jpg"
+      <!-- TOP画面 -->
+      <v-col v-for="imgs in itemsImage" :key="imgs.city">
+        <div v-if="showTop">
+          <v-hover v-slot:default="{ hover }">
+            <v-card
+              class="mx-auto"
+              color="white"
+              @click="showGridArea(imgs.city)"
             >
-              <v-expand-transition>
-                <!-- TOP画面の画像カバー文字出現 -->
-                <div
-                  v-if="hover && !tokyoGrid"
-                  class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
-                >
-                  TOKYO
-                </div>
-              </v-expand-transition>
-            </v-img>
-          </v-card>
-        </v-col>
-      </v-hover>
-      <!-- いい感じで次画面をふわっと表示 -->
-      <transition name="fade">
-        <!-- 画像一覧表示 -->
-        <v-col v-if="tokyoGrid">
-          <!-- 画像情報をループして表示 -->
-          <v-card
-            v-for="(item,i) in itemsTokyo"
-            :key="i"
-            link
-            :ripple="{ center: true }"
-          >
-            <v-row>
-              <v-col>
-                <!-- コンポーネントに画像情報渡す -->
-                <ImageContent :content="item" />
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-col>
-      </transition>
-      <v-hover v-slot:default="{ hover }">
-        <!-- TOP画面 -->
-        <v-col v-if="fukuokaShow">
-          <v-card
-            class="mx-auto"
-            color="white"
-            @click="showGridArea('fukuoka')"
-          >
-            <v-img
-              :aspect-ratio="9/16"
-              src="images/mojikoutower.jpg"
+              <v-img
+                :aspect-ratio="9/16"
+                :src="imgs.src"
+              >
+                <v-expand-transition>
+                  <div
+                    v-if="hover"
+                    class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
+                  >
+                    {{ imgs.city }}
+                  </div>
+                </v-expand-transition>
+              </v-img>
+            </v-card>
+          </v-hover>
+        </div>
+      </v-col>
+      <transition-group name="fade" tag="div">
+        <v-col v-for="imgs in itemsImage" :key="imgs.city">
+          <div v-if="imgs.grid">
+            <v-card
+              v-for="(item,i) in itemsCity"
+              :key="i"
+              link
+              :ripple="{ center: true }"
             >
-              <v-expand-transition>
-                <!-- TOP画面の画像カバー文字出現 -->
-                <div
-                  v-if="hover && !fukuokaGrid"
-                  class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
-                >
-                  FUKUOKA
-                </div>
-              </v-expand-transition>
-            </v-img>
-          </v-card>
+              <v-row>
+                <v-col>
+                  <ImageContent :content="item" />
+                </v-col>
+              </v-row>
+            </v-card>
+          </div>
         </v-col>
-      </v-hover>
-      <!-- いい感じで次画面をふわっと表示 -->
-      <transition name="fade">
-        <!-- 画像一覧表示 -->
-        <v-col v-if="fukuokaGrid">
-          <!-- 画像情報をループして表示 -->
-          <v-card
-            v-for="(item,i) in itemsFukuoka"
-            :key="i"
-            link
-            :ripple="{ center: true }"
-          >
-            <v-row>
-              <v-col>
-                <!-- コンポーネントに画像情報渡す -->
-                <ImageContent :content="item" />
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-col>
-      </transition>
-      <v-hover v-slot:default="{ hover }">
-        <!-- TOP画面 -->
-        <v-col v-if="naraShow">
-          <v-card
-            class="mx-auto"
-            color="white"
-            @click="showGridArea('nara')"
-          >
-            <v-img
-              :aspect-ratio="9/16"
-              src="images/toudaiji.jpg"
-            >
-              <v-expand-transition>
-                <!-- TOP画面の画像カバー文字出現 -->
-                <div
-                  v-if="hover && !naraGrid"
-                  class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
-                >
-                  NARA
-                </div>
-              </v-expand-transition>
-            </v-img>
-          </v-card>
-        </v-col>
-      </v-hover>
-      <!-- いい感じで次画面をふわっと表示 -->
-      <transition name="fade">
-        <!-- 画像一覧表示 -->
-        <v-col v-if="naraGrid">
-          <!-- 画像情報をループして表示 -->
-          <v-card
-            v-for="(item,i) in itemsNara"
-            :key="i"
-            link
-            :ripple="{ center: true }"
-          >
-            <v-row>
-              <v-col>
-                <!-- コンポーネントに画像情報渡す -->
-                <ImageContent :content="item" />
-              </v-col>
-            </v-row>
-          </v-card>
-        </v-col>
-      </transition>
+      </transition-group>
     </v-row>
   </v-container>
 </template>
 <script>
-// 画像表示コンポーネント
+// 画像一覧表示コンポーネント
 import ImageContent from '~/components/ImageContent'
 
 export default {
   components: {
     // コンポーネント定義
+    // ImageTopContent,
     ImageContent
   },
   transitions: {
@@ -153,22 +63,32 @@ export default {
   },
   data () {
     return {
-      // TOKYO TOP画像表示フラグ
-      tokyoShow: true,
-      // TOKYO 一覧画面表示フラグ
-      tokyoGrid: false,
-      // FUKUOKA TOP画像表示フラグ
-      fukuokaShow: true,
-      // FUKUOKA 一覧画面表示フラグ
-      fukuokaGrid: false,
-      // NARA TOP画像表示フラグ
-      naraShow: true,
-      // NARA 一覧画面表示フラグ
-      naraGrid: false,
-      items: [{}],
+      // TOP画面表示フラグ
+      showTop: true,
+      // 一覧画面表示情報
+      itemsCity: [{}],
       // 画像情報設定
-      itemsTokyo: [
+      itemsImage: [
         {
+          city: 'TOKYO',
+          src: 'images/tokyotower.jpg',
+          grid: false
+        },
+        {
+          city: 'FUKUOKA',
+          src: 'images/mojikoutower.jpg',
+          grid: false
+        },
+        {
+          city: 'NARA',
+          src: 'images/toudaiji.jpg',
+          grid: false
+        }
+      ],
+      // 画像情報設定
+      itemsGrid: [
+        {
+          city: 'TOKYO',
           src: 'images/tokyotower.jpg',
           title: '一人タワー',
           author: 'h.maehara',
@@ -176,6 +96,7 @@ export default {
           status: false
         },
         {
+          city: 'TOKYO',
           src: 'images/tokyo_road.JPG',
           title: '昼間ですが、閑散としていました。',
           author: 'h.maehara',
@@ -183,6 +104,7 @@ export default {
           status: false
         },
         {
+          city: 'TOKYO',
           src: 'images/tokyo_station.JPG',
           title: '広すぎて迷うので、困ります。',
           author: 'h.maehara',
@@ -190,15 +112,15 @@ export default {
           status: false
         },
         {
+          city: 'TOKYO',
           src: 'images/Mt_Fuji.JPG',
           title: '車窓からにしてはいい感じです。',
           author: 'h.maehara',
           description: '趣味で各地に遠征していたら、\r\nエクスプレス予約のポイント溜まりまくりました。\r\nポイントで帰りはグリーン車で帰岡。\r\n\r\n#新幹線\r\n#富士山\r\n#束の間リッチ\r\n#東京ばな奈は買う',
           status: false
-        }
-      ],
-      itemsFukuoka: [
+        },
         {
+          city: 'FUKUOKA',
           src: 'images/mojikoutower.jpg',
           title: '門司港の高層ビル',
           author: 'h.maehara',
@@ -206,6 +128,7 @@ export default {
           status: false
         },
         {
+          city: 'FUKUOKA',
           src: 'images/moji_tower.JPG',
           title: '貸し切り展望台',
           author: 'h.maehara',
@@ -213,6 +136,7 @@ export default {
           status: false
         },
         {
+          city: 'FUKUOKA',
           src: 'images/moji_bananaman.JPG',
           title: '思ってたんと違う',
           author: 'h.maehara',
@@ -220,6 +144,7 @@ export default {
           status: false
         },
         {
+          city: 'FUKUOKA',
           src: 'images/kokura_station.JPG',
           title: '銀河じゃないのに999',
           author: 'h.maehara',
@@ -227,15 +152,15 @@ export default {
           status: false
         },
         {
+          city: 'FUKUOKA',
           src: 'images/kokurajyo.JPG',
           title: '小倉城',
           author: 'h.maehara',
           description: '桜の季節でいい感じでした。\r\n天守閣にも入場可能です。\r\nそういえば城外でコスプレイヤーが撮影会してました。\r\n忍者は城が似合いますね。\r\n\r\n #おひとり様\r\n #小倉城 \r\n #城内にエレベーターあり \r\n #隣は小倉祇園八坂神社 \r\n #さらに隣はショッピングモール \r\n #付近に観光スポット満載',
           status: false
-        }
-      ],
-      itemsNara: [
+        },
         {
+          city: 'NARA',
           src: 'images/daibutsu.jpg',
           title: '大仏様の手',
           author: 'h.maehara',
@@ -243,6 +168,7 @@ export default {
           status: false
         },
         {
+          city: 'NARA',
           src: 'images/kashihara.JPG',
           title: '橿原神宮前',
           author: 'h.maehara',
@@ -250,6 +176,7 @@ export default {
           status: false
         },
         {
+          city: 'NARA',
           src: 'images/kashihara2.JPG',
           title: '橿原神宮鳥居',
           author: 'h.maehara',
@@ -257,6 +184,7 @@ export default {
           status: false
         },
         {
+          city: 'NARA',
           src: 'images/kashihara3.JPG',
           title: '外拝殿の周り',
           author: 'h.maehara',
@@ -264,6 +192,7 @@ export default {
           status: false
         },
         {
+          city: 'NARA',
           src: 'images/kasugataisya.JPG',
           title: '鹿せんべいたべる？',
           author: 'h.maehara',
@@ -274,37 +203,28 @@ export default {
     }
   },
   methods: {
-    // 一覧画面表示フラグ設定
     showGridArea (id) {
-      // 一覧画像情報初期化
-      this.items = []
-      if (id === 'tokyo') {
-        // 一覧画像情報設定
-        this.items = this.itemsTokyo
-        this.tokyoShow = false
-        this.tokyoGrid = true
-        this.fukuokaShow = false
-        this.fukuokaGrid = false
-        this.naraShow = false
-        this.naraGrid = false
-      } else if (id === 'fukuoka') {
-        // 一覧画像情報設定
-        this.items = this.itemsFukuoka
-        this.fukuokaShow = false
-        this.fukuokaGrid = true
-        this.tokyoShow = false
-        this.tokyoGrid = false
-        this.naraShow = false
-        this.naraGrid = false
-      } else if (id === 'nara') {
-        // 一覧画像情報設定
-        this.items = this.itemsNara
-        this.naraShow = false
-        this.naraGrid = true
-        this.tokyoShow = false
-        this.tokyoGrid = false
-        this.fukuokaShow = false
-        this.fukuokaGrid = false
+      // TOP画面表示フラグOFF(TOP画像がクリックされたので、OFFにする)
+      this.showTop = false
+      // 一覧画面表示判定
+      let i = 0
+      let j = 0
+      let k = 0
+      for (i in this.itemsImage) {
+        if (id === this.itemsImage[i].city) {
+        // 一覧画面表示フラグON
+          this.itemsImage[i].grid = true
+        } else {
+          // 一覧画面表示フラグOFF
+          this.itemsImage[i].grid = false
+        }
+      }
+      for (j in this.itemsGrid) {
+        // 一覧表示する画像を設定
+        if (id === this.itemsGrid[j].city) {
+          this.itemsCity[k] = this.itemsGrid[j]
+          k++
+        }
       }
     }
   }

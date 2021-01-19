@@ -8,7 +8,6 @@
         <v-col cols="6">
           <v-img
             :src="item.src"
-            height="100%"
             class="item-display-left"
           />
         </v-col>
@@ -41,6 +40,7 @@
       <v-img
         :src="item.src"
         height="400"
+        width="1800"
         class="itemlist-display"
       />
     </div>
