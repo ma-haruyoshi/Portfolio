@@ -39,8 +39,6 @@
       <!-- 横長で画像表示 -->
       <v-img
         :src="item.src"
-        height="400"
-        width="1800"
         class="itemlist-display"
       />
     </div>
@@ -79,10 +77,15 @@ export default {
 .itemlist-display {
   /* 左右余白 */
   margin: 0px 10px 0px 10px;
+  height: 400px;
+  width: 1800px;
+  object-fit: cover;
 }
 .item-display-left {
   /* 左余白 */
   margin: 0px 0px 0px 10px;
+  max-width: 1000px;
+  object-fit: contain;
 }
 .item-description {
   font-size: x-large;
