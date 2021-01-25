@@ -46,6 +46,11 @@
         </v-col>
       </transition-group>
     </v-row>
+    <div v-if="!showTop">
+      <a href="/">
+        <button>TOP</button>
+      </a>
+    </div>
   </v-container>
 </template>
 <script>
@@ -206,26 +211,28 @@ export default {
     showGridArea (id) {
       // TOP画面表示フラグOFF(TOP画像がクリックされたので、OFFにする)
       this.showTop = false
+      // 画像情報一時保存用
+      const items = []
       // 一覧画面表示判定
-      let i = 0
-      let j = 0
-      let k = 0
-      for (i in this.itemsImage) {
-        if (id === this.itemsImage[i].city) {
+      this.itemsImage.forEach(function (images) {
+        if (id === images.city) {
         // 一覧画面表示フラグON
-          this.itemsImage[i].grid = true
+          images.grid = true
         } else {
           // 一覧画面表示フラグOFF
-          this.itemsImage[i].grid = false
+          images.grid = false
         }
-      }
-      for (j in this.itemsGrid) {
-        // 一覧表示する画像を設定
-        if (id === this.itemsGrid[j].city) {
-          this.itemsCity[k] = this.itemsGrid[j]
-          k++
+      })
+      // 一覧表示画像情報取得設定
+      this.itemsGrid.forEach(function (images) {
+        if (id === images.city) {
+          // forEach文内でのthisは、繰り返す配列のことを指してしまうので、直接格納することができない
+          // 一時保存用の配列へ
+          items.push(images)
         }
-      }
+      })
+      // 一時保存したものを一覧画像情報用配列へ
+      this.itemsCity = items
     }
   }
 }
@@ -251,5 +258,44 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+button{
+  background:orange;
+  color:#fff;
+  border:none;
+  position: fixed;
+  bottom: 20px;
+  right:10px;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:orange;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: orange;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
 }
 </style>
