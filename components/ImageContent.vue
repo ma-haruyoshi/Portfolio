@@ -36,11 +36,22 @@
     </div>
     <!-- 各画像がクリックされていない、初期表示 -->
     <div v-else>
-      <!-- 横長で画像表示 -->
-      <v-img
-        :src="item.src"
-        class="itemlist-display"
-      />
+      <v-hover v-slot:default="{ hover }">
+        <div>
+          <!-- 横長で画像表示 -->
+          <v-img
+            :src="item.src"
+            class="itemlist-display"
+          >
+            <v-expand-transition>
+              <div
+                v-if="!hover"
+                class="d-flex transition-ease-in-out black darken-2 v-card--reveal-novertical display-3 white--text"
+              />
+            </v-expand-transition>
+          </v-img>
+        </div>
+      </v-hover>
     </div>
   </div>
 </template>

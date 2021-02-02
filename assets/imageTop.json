@@ -1,0 +1,17 @@
+[
+    {
+      "city": "TOKYO",
+      "src": "images/tokyotower.jpg",
+      "grid": false
+    },
+    {
+      "city": "FUKUOKA",
+      "src": "images/mojikoutower.jpg",
+      "grid": false
+    },
+    {
+      "city": "NARA",
+      "src": "images/toudaiji.jpg",
+      "grid": false
+    }
+  ]
