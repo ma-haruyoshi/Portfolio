@@ -1,58 +1,57 @@
 <template>
-  <v-container class="white">
-    <v-row no-gutters justify="center">
-      <!-- TOP画面 -->
-      <v-col v-for="imgs in itemsImage" :key="imgs.city">
-        <div v-if="showTop">
-          <v-hover v-slot:default="{ hover }">
-            <v-card
-              class="mx-auto"
-              color="white"
-              @click="showGridArea(imgs.city)"
-            >
-              <v-img
-                :aspect-ratio="9/16"
-                :src="imgs.src"
+  <v-container class="white" style="width:750px">
+    <div v-if="showTop">
+      <v-row no-gutters justify="center">
+        <!-- TOP画面 -->
+          <v-col v-for="imgs in itemsImage" :key="imgs.city">
+            <v-hover v-slot:default="{ hover }">
+              <v-card
+                class="mx-auto"
+                color="white"
+                @click="showGridArea(imgs.city)"
               >
-                <v-expand-transition>
-                  <div
-                    v-if="hover"
-                    class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal display-3 white--text"
-                  >
-                    {{ imgs.city }}
-                  </div>
-                </v-expand-transition>
-              </v-img>
-            </v-card>
-          </v-hover>
-        </div>
-      </v-col>
-      <transition-group name="fade" tag="div">
-        <v-col v-for="imgs in itemsImage" :key="imgs.city">
-          <div v-if="imgs.grid">
-            <v-card
-              v-for="(item,i) in itemsCity"
-              :key="i"
-              link
-              :ripple="{ center: true }"
-            >
-              <v-row>
-                <v-col>
-                  <ImageContent :content="item" />
-                </v-col>
-              </v-row>
-            </v-card>
-          </div>
+                <v-img
+                  :aspect-ratio="9/16"
+                  :src="imgs.src"
+                >
+                  <v-expand-transition>
+                    <div
+                      v-if="hover"
+                      class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal display-1 white--text"
+                    >
+                      {{ imgs.city }}
+                    </div>
+                  </v-expand-transition>
+                </v-img>
+              </v-card>
+            </v-hover>
         </v-col>
-      </transition-group>
-    </v-row>
+      </v-row>
+    </div>
     <div v-if="!showTop">
-      <a href="/" class="btn-circle-border-double">TOP</a>
-      <!--
-      <a href="/">
-        <button>TOP</button>
-      </a>
--->
+      <v-row no-gutters justify="center">
+        <transition-group name="fade" tag="div">
+          <v-col v-for="imgs in itemsImage" :key="imgs.city">
+            <div v-if="imgs.grid">
+              <v-card
+                v-for="(item,i) in itemsCity"
+                :key="i"
+                link
+                :ripple="{ center: true }"
+              >
+                <v-row>
+                  <v-col>
+                    <ImageContent :content="item" />
+                  </v-col>
+                </v-row>
+              </v-card>
+            </div>
+          </v-col>
+        </transition-group>
+      </v-row>
+      <div class="bttn-flex">
+        <a href="/" class="bttn">TOP</a>
+      </div>
     </div>
   </v-container>
 </template>
@@ -137,84 +136,85 @@ export default {
   text-orientation: upright; /* テキストの向き */
   height: 100%;
 }
-/*
-.black {
-  color:black;
-}
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-*/
 
-button{
-  background:orange;
-  color:#fff;
-  border:none;
-  position: fixed;
-  bottom: 20px;
-  right:10px;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-button:hover{
-  background:#fff;
-  color:orange;
-}
-button:before,button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: orange;
-  transition:400ms ease all;
-}
-button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-button:hover:before,button:hover:after{
-  width:100%;
-  transition:800ms ease all;
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* TOPボタン */
-.btn-circle-border-double {
-  position: fixed;            /* ボタンを固定 */
-  bottom: 10px;               /* 固定位置 */
-  right: 30px;                /* 固定位置 */
-  display: inline-block;
-  text-decoration: none;
-  background-color: #fff;   /* 背景色 */
+a.bttn {
   color: #000000;
-  width: 150px;               /* ボタンサイズ横 */
-  height: 150px;              /* ボタンサイ縦 */
-  line-height: 120px;         /* 行ボックスの高さ */
-  border-radius: 50%;         /* 角を取る */
-  border: double 10px #000000;  /* 線の種類、太さ、色 */
-  font-size: 30px;            /* 文字サイズ */
-  text-align: center;         /* 文字表示位置 */
-  overflow: hidden;           /* ボックスからはみ出た部分の表示 */
-  transition: .6s;
+  text-decoration: none;
+  transition: 0.3s all ease;
+}
+a.bttn:hover {
+  color: #B15947;
+}
+a.bttn:focus {
+  color: #000000;
+}
+a.bttn:active {
+  color: #FFF;
 }
 
-a.btn-circle-border-double  {
-  color:#000;
+.bttn-flex {
+  min-height: 10vh;
+  display: flex;
+  align-items: center ;
+  justify-content: center;
 }
 
-/* TOPボタンhover時 */
-.btn-circle-border-double:hover {
-  -webkit-transform: rotateY(360deg);
-  transform: rotateY(360deg); /* Y軸を軸とする角度によって時計回りの回転を指定 */
+.bttn {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 12px;
+  position: relative;
+}
+.bttn:after {
+  transition: 0.3s all ease;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 3px;
+  border: 3px solid #B15947;
+}
+.bttn:before {
+  content: "";
+  position: absolute;
+  border-radius: 3px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+/**
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+*/
+  z-index: -1;
+}
+.bttn:hover:after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.bttn:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.bttn:active:before {
+  background-color: #fff;
+}
+.bttn:active:after {
+  border-color: #f1481b;
 }
 </style>

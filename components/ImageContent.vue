@@ -18,17 +18,17 @@
             <v-list-item-avatar color="grey" />
             <v-list-item-content>
               <!-- タイトル -->
-              <v-list-item-title class="display-1">
+              <v-list-item-title class="body-1">
                 {{ item.title }}
               </v-list-item-title>
               <!-- 撮影者 -->
-              <v-list-item-subtitle class="headline">
+              <v-list-item-subtitle class="caption">
                 {{ item.author }}
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
           <!-- 説明（改行は、改行コードでできる） -->
-          <div class="item-description">
+          <div class="item-description body-2">
             {{ item.description }}
           </div>
         </v-col>
@@ -88,18 +88,17 @@ export default {
 .itemlist-display {
   /* 左右余白 */
   margin: 0px 10px 0px 10px;
-  height: 400px;
-  width: 1800px;
+  height: 150px;
+  width: 750px;
   object-fit: cover;
 }
 .item-display-left {
   /* 左余白 */
   margin: 0px 0px 0px 10px;
-  max-width: 1000px;
-  object-fit: contain;
+  max-width: 300px;
+  object-fit: fill;
 }
 .item-description {
-  font-size: x-large;
   white-space: pre-line;
   word-wrap: break-word;
 }
