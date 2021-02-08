@@ -5,7 +5,7 @@
     <div v-if="item.status">
       <v-row>
         <!-- 左に画像表示 -->
-        <v-col cols="6">
+        <v-col cols="5">
           <v-img
             :src="item.src"
             class="item-display-left"
@@ -46,7 +46,7 @@
             <v-expand-transition>
               <div
                 v-if="!hover"
-                class="d-flex transition-ease-in-out black darken-2 v-card--reveal-novertical display-3 white--text"
+                class="d-flex transition-ease-in-out black darken-2 v-card--reveal-novertical"
               />
             </v-expand-transition>
           </v-img>
@@ -89,7 +89,6 @@ export default {
   /* 左右余白 */
   margin: 0px 10px 0px 10px;
   height: 150px;
-  width: 750px;
   object-fit: cover;
 }
 .item-display-left {

@@ -1,38 +1,38 @@
 <template>
-  <v-container class="white" style="width:750px">
+  <v-container class="white" style="margin: 100px auto auto;">
     <div v-if="showTop">
       <v-row no-gutters justify="center">
         <!-- TOP画面 -->
-          <v-col v-for="imgs in itemsImage" :key="imgs.city">
-            <v-hover v-slot:default="{ hover }">
-              <v-card
-                class="mx-auto"
-                color="white"
-                @click="showGridArea(imgs.city)"
+        <v-col v-for="imgs in itemsImage" :key="imgs.city">
+          <v-hover v-slot:default="{ hover }">
+            <v-card
+              class="mx-auto"
+              color="white"
+              @click="showGridArea(imgs.city)"
+            >
+              <v-img
+                :aspect-ratio="9/16"
+                :src="imgs.src"
               >
-                <v-img
-                  :aspect-ratio="9/16"
-                  :src="imgs.src"
-                >
-                  <v-expand-transition>
-                    <div
-                      v-if="hover"
-                      class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal display-1 white--text"
-                    >
-                      {{ imgs.city }}
-                    </div>
-                  </v-expand-transition>
-                </v-img>
-              </v-card>
-            </v-hover>
+                <v-expand-transition>
+                  <div
+                    v-if="hover"
+                    class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal display-1 white--text"
+                  >
+                    {{ imgs.city }}
+                  </div>
+                </v-expand-transition>
+              </v-img>
+            </v-card>
+          </v-hover>
         </v-col>
       </v-row>
     </div>
-    <div v-if="!showTop">
+    <div v-if="!showTop" >
       <v-row no-gutters justify="center">
-        <transition-group name="fade" tag="div">
+        <transition-group name="fade" tag="div" class="itemlist">
           <v-col v-for="imgs in itemsImage" :key="imgs.city">
-            <div v-if="imgs.grid">
+            <div v-if="imgs.grid" >
               <v-card
                 v-for="(item,i) in itemsCity"
                 :key="i"
@@ -49,9 +49,9 @@
           </v-col>
         </transition-group>
       </v-row>
-      <div class="bttn-flex">
+<!--      <div class="bttn-flex">-->
         <a href="/" class="bttn">TOP</a>
-      </div>
+<!--      </div>-->
     </div>
   </v-container>
 </template>
@@ -147,6 +147,7 @@ export default {
 
 a.bttn {
   color: #000000;
+  display: inline-block;
   text-decoration: none;
   transition: 0.3s all ease;
 }
@@ -168,6 +169,7 @@ a.bttn:active {
 }
 
 .bttn {
+  text-align: center;
   width: 50px;
   height: 50px;
   line-height: 50px;
@@ -176,37 +178,52 @@ a.bttn:active {
   letter-spacing: 1px;
   font-weight: bold;
   font-size: 12px;
-  position: relative;
+  position: fixed;
+  bottom:20px;
+  right:30px;
 }
 .bttn:after {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
   transition: 0.3s all ease;
   content: "";
-  position: absolute;
+  position: fixed;
+/*
   left: 0;
   top: 0;
-  bottom: 0;
-  right: 0;
+*/
+  bottom: 20px;
+  right: 30px;
   border-radius: 3px;
   border: 3px solid #B15947;
 }
 .bttn:before {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
   content: "";
-  position: absolute;
+  position: fixed;
   border-radius: 3px;
+  background-color: #fff;
+/*
+  border: 3px solid #B15947;
   left: 0;
   top: 0;
-  bottom: 0;
-  right: 0;
-/**
+*/
+  bottom: 20px;
+  right: 30px;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-*/
   z-index: -1;
 }
 .bttn:hover:after {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+/*
 .bttn:active {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
@@ -216,5 +233,11 @@ a.bttn:active {
 }
 .bttn:active:after {
   border-color: #f1481b;
+}
+*/
+.itemlist {
+  min-width: 300px;
+  max-width: 750px;
+  width: 100%;
 }
 </style>
