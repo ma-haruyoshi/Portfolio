@@ -37,7 +37,15 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '~/plugins/vue-scrollto'
+    '~/plugins/vue-scrollto',
+    {
+      src: '~/plugins/vue-typer',
+      ssr: false
+    },
+    {
+      src: '~/plugins/timeline-vuejs',
+      mode: 'client'
+    }
   ],
   /*
   ** Auto import components
@@ -81,10 +89,15 @@ export default {
   */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
-      dark: false,
+      options: {
+        customProperties: true
+      },
+      light: true,
       themes: {
         dark: {
+          background: '#f4f3f6',
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
@@ -92,6 +105,9 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+        },
+        light: {
+          background: '#ffffff'
         }
       }
     }
