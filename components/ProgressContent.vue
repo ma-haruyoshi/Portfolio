@@ -93,5 +93,7 @@ export default {
 }
 .white {
   background-color: white;
+  white-space: pre-line;
+  word-wrap: break-word;
 }
 </style>

@@ -1,26 +1,26 @@
 [
-    {
-      "color": "deep-orange lighten-2",
-      "lang" : "java",
-      "show": false ,
-      "text": "新入社員研修で初めて教えていただきました。\r\nフラグ、ループ、オブジェクト指向…etc<br>呪文にしか思えませんでした。\r\n意図せず無限ループに陥り、絶望した覚えがありすぎます。"
-    },
-    {
-      "color": "blue-grey darken-2",
-      "lang" : "ColdFusion",
-      "show": false ,
-      "text": "初めて配属された部署のプロジェクトで使っていた言語です。\r\nhtmlのタグっぽい雰囲気を醸し出していたので、仲良くなれるかと思ったら、そうでもなかったです。"
-    },
-    {
-      "color": "indigo lighten-2",
-      "lang" : "VBA",
-      "show": false ,
-      "text": "しばらくjavaのお仕事が続いた後に、出会いました。色々と勝手が違って戸惑いました。\r\nたまにExcelマクロを触るときに思い出します。\r\n大変だった記憶しかありません。"
-    },
-    {
-      "color": "brown darken-2",
-      "lang" : "PHP",
-      "show": false,
-      "text": "日常的に見かける言語です。\r\nソースを追うことはできますが\r\nPGしましょう！と言われると眠気に襲われますzzz"
-    }
-  ]
+  {
+   "color": "deep-orange lighten-2",
+   "lang" : "java",
+   "show": false ,
+   "text": "新入社員研修で初めて教えていただきました。 \r\n フラグ、ループ、オブジェクト指向…etc \r\n 呪文にしか思えませんでした。 \r\n 意図せず無限ループに陥り、絶望した覚えがありすぎます。"
+  },
+  {
+   "color": "blue-grey darken-2",
+   "lang" : "ColdFusion",
+   "show": false ,
+   "text": "初めて配属された部署のプロジェクトで使っていた言語です。 \r\n htmlのタグっぽい雰囲気を醸し出していたので、仲良くなれるかと思ったら、そうでもなかったです。"
+  },
+  {
+   "color": "indigo lighten-2",
+   "lang" : "VBA",
+   "show": false ,
+   "text": "しばらくjavaのお仕事が続いた後に、出会いました。色々と勝手が違って戸惑いました。 \r\n たまにExcelマクロを触るときに思い出します。 \r\n 大変だった記憶しかありません。"
+  },
+  {
+   "color": "brown darken-2",
+   "lang" : "PHP",
+   "show": false,
+   "text": "日常的に見かける言語です。 \r\n ソースを追うことはできますが \r\n PGしましょう！と言われると眠気に襲われますzzz"
+  }
+ ]
