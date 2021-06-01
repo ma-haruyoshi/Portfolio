@@ -39,33 +39,30 @@
     <!-- 背景は何かしら動きがほしい -->
     <!-- 背景は固定で、スクロールするとコンテンツが出現するようにしたい -->
     <div class="main" align="center">
-      <!--<div class="scallop-up" />-->
-      <div id="home" class="sub black-block">
+      <div id="home" class="black-block">
         <h1>Welcome</h1>
         <p>My portfolio site</p>
       </div>
-      <div id="about" class="sub black-block">
+      <div id="about" class="black-block">
         <h1>About</h1>
         <p>自己紹介</p>
-        <no-ssr>
+        <client-only>
           <vue-sticker :d="100" class-name="good" />
-        </no-ssr>
+        </client-only>
         <p>name:ma-haruyoshi</p>
         <p>hobby:一人旅（今は昔）</p>
         <p>wish:心身の健康</p>
       </div>
-      <div id="skills" class="sub black-block">
+      <div id="skills" class="black-block">
         <h1>Skills</h1>
         <p>今まで仕事で経験した言語</p>
         <ProgressContent :content="itemsSkill" />
       </div>
-      <div id="gallaly" class="sub black-block">
+      <div id="gallaly" class="black-block">
         <h1>Gallaly</h1>
-        <p>一人旅で撮りためた写真</p>
+        <p>一人旅で撮りためた写真<br><br></p>
         <ImageContent :content="itemsGrid" />
       </div>
-      <!--<div class="scallop-down" />-->
-      <!--<div class="piyo" />-->
     </div>
     <v-footer app>
       <div class="flex-grow-1" />
@@ -139,70 +136,10 @@ p {
   font-size:20px;
   /*font-family:'Raleway', serif;*/
 }
-
-/*----------------*/
-/*  SCALLOP down  */
-/*----------------*/
-.scallop-down{
-  height:100px;
-  max-width:800px;
-  background: -webkit-gradient(radial, 50% 0, 10, 50% 0, 40, from(#afcd68), color-stop(0.49, #afcd68), color-stop(0.51, #fff), to(white));
-  -webkit-background-size: 49px 100%;
-}
-
-/*----------------*/
-/*  SCALLOP up    */
-/*----------------*/
-.scallop-up{
-  height:100px;
-  max-width:800px;
-  background: -webkit-gradient(radial, 50% 100%, 10, 50% 100%, 40, from(#afcd68), color-stop(0.49, #afcd68), color-stop(0.51, #fff), to(white));
-  -webkit-background-size: 49px 100%;
-}
-
 .good__main-image,
 .good__backside-image {
   background-color: rgb(250, 248, 248);
   background-size: contain;
   background-image: url("../static/images/prof.png");
-}
-
-.triangle01 {
-  width: 800px;
-  height: auto;
-  background-color: #afcd68;
-  transform: skewY(-5deg);
-  /*margin-top: 5vw;*/
-}
-.triangle01 p {
-  font-size:20px;
-  /* font-family:'Raleway', serif;*/
-  color: #fff;
-}
-.triangle01 h1 {
-  text-align:center;
-  font-size:80px;
-  /* font-family:'wire one', serif;*/
-  font-weight:normal;
-  max-width:800px;
-  color: #fff;
-}
-.triangle01 > * {
-  transform: skewY(5deg);
-}
-.piyo {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background-image: url("../static/images/piyo.png");
-  animation: right 12s 0s ease-out infinite alternate;
-}
-@keyframes right{
-  0%{
-    transform: translateX(0);
-  }
-  100%{
-    transform: translateX(800px);
-  }
 }
 </style>

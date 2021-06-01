@@ -37,15 +37,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '~/plugins/vue-scrollto',
-    {
-      src: '~/plugins/vue-typer',
-      ssr: false
-    },
-    {
-      src: '~/plugins/timeline-vuejs',
-      mode: 'client'
-    }
+    '~/plugins/vue-scrollto'
   ],
   /*
   ** Auto import components

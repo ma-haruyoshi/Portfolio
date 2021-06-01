@@ -22,11 +22,11 @@
             </v-progress-circular>
             <v-card-actions class="white">
               <v-spacer />
-              もっと見る
               <v-btn
                 icon
                 @click="data.show = !data.show"
               >
+                もっと見る
                 <v-icon>{{ data.show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
               </v-btn>
             </v-card-actions>
