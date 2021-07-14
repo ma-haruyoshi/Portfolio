@@ -1,9 +1,11 @@
 <template>
   <div>
+    <div class="space" />
     <div class="gallery3d">
       <div id="carousel">
         <figure
           v-for="(slide,i) in item"
+          id="round"
           :key="i"
         >
           <v-dialog light content-class="v-dialog-style">
@@ -11,10 +13,12 @@
               <v-img :src="slide.src" v-on="on" />
             </template>
             <v-card flat tile>
+              <!-- タイトル -->
               <v-card-title class="body-2 black--text">
                 {{ slide.title }}
               </v-card-title>
               <v-img :src="slide.src" max-height="450" contain />
+              <!-- 本文 -->
               <v-card-text class="item-description caption black--text">
                 {{ slide.description }}
               </v-card-text>
@@ -54,7 +58,6 @@ export default {
 }
 .v-dialog-style {
   max-width:500px;
-  height:100%;
 }
 /* スクロールの幅の設定 */
 .v-dialog-style::-webkit-scrollbar {
