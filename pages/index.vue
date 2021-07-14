@@ -36,8 +36,6 @@
         </a>
       </v-app-bar>
     </header>
-    <!-- 背景は何かしら動きがほしい -->
-    <!-- 背景は固定で、スクロールするとコンテンツが出現するようにしたい -->
     <div class="main" align="center">
       <div id="home" class="black-block">
         <h1>Welcome</h1>
@@ -50,7 +48,7 @@
           <vue-sticker :d="100" class-name="good" />
         </client-only>
         <p>name:ma-haruyoshi</p>
-        <p>hobby:一人旅（今は昔）</p>
+        <p>hobby:一人旅（今は昔）、お笑い観賞</p>
         <p>wish:心身の健康</p>
       </div>
       <div id="skills" class="black-block">
