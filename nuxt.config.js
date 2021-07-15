@@ -77,6 +77,10 @@ export default {
       }
     ]
   },
+  static: {
+    // サブフォルダ名をパスに追加しない設定
+    prefix: false
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
@@ -116,9 +120,5 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-  },  
-  static: {
-    // サブフォルダ名をパスに追加しない設定
-    prefix: false
   }
 }
