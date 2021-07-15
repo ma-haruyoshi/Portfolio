@@ -48,7 +48,7 @@
           <vue-sticker :d="100" class-name="good" />
         </client-only>
         <p>name:ma-haruyoshi</p>
-        <p>hobby:一人旅（今は昔）、お笑い観賞</p>
+        <p>hobby:お笑い観賞</p>
         <p>wish:心身の健康</p>
       </div>
       <div id="skills" class="black-block">

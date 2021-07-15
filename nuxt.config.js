@@ -16,12 +16,19 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    // titleTemplate: '%s - ' + process.env.npm_package_name,
+    // title: process.env.npm_package_name || '',
+    title: 'portfolio',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'ポートフォリオサイト' },
+      { hid: 'keyword', name: 'ポートフォリオ' },
+      { hid: 'og:type', property: 'website' },
+      { hid: 'og:title', property: 'TOP' },
+      { hid: 'og:description', property: 'ポートフォリオサイト' },
+      { hid: 'og:url', property: 'https://ma-haruyoshi-portfolio.netlify.app/' },
+      { hid: 'og:image', property: 'https://ma-haruyoshi-portfolio.netlify.app/images/prof.png' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -109,5 +116,9 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+  },  
+  static: {
+    // サブフォルダ名をパスに追加しない設定
+    prefix: false
   }
 }
