@@ -47,32 +47,34 @@
                 <h1>Skills</h1>
                 <p>今まで仕事で経験した言語</p>
                 <br>
-                <v-btn
-                  v-for="(btndata,i) in itemsSkill"
-                  :key="i"
-                  depressed
-                  class="mx-2"
-                  color="white"
-                  fab
-                  large
-                  @click="showText(btndata.lang)"
-                >
-                  <div v-if="btndata.langicon" !="">
-                    <v-icon>
-                      <!-- アイコン -->
-                      {{ btndata.langicon }}
-                    </v-icon>
-                  </div>
-                  <div v-else>
-                    <!-- アイコン無し、略称 -->
-                    {{ btndata.shrotlang }}
-                  </div>
-                </v-btn>
+                <a v-scroll-to="'#skilltext'" href="#">
+                  <v-btn
+                    v-for="(btndata,i) in itemsSkill"
+                    :key="i"
+                    depressed
+                    class="mx-2"
+                    color="white"
+                    fab
+                    large
+                    @click="showLang = btndata.lang"
+                  >
+                    <div v-if="btndata.langicon" !="">
+                      <v-icon>
+                        <!-- アイコン -->
+                        {{ btndata.langicon }}
+                      </v-icon>
+                    </div>
+                    <div v-else>
+                      <!-- アイコン無し、略称 -->
+                      {{ btndata.shrotlang }}
+                    </div>
+                  </v-btn>
+                </a>
               </div>
             </div>
           </v-flex>
           <v-flex xs12 sm12 md6 lg6 xl6>
-            <div class="discript right-3">
+            <div id="skilltext" class="discript right-3">
               <div
                 v-for="(data,i) in itemsSkill"
                 :key="i"
@@ -132,39 +134,10 @@ export default {
       // スキル情報設定
       itemsSkill: skillData,
       Header,
-      showLang: null,
-      show_php: false,
-      show_java: false,
-      show_dotnet: false,
-      show_cf: false
+      showLang: null
     }
   },
   methods: {
-    // 一覧画面表示フラグ設定
-    showText (lang) {
-      this.showLang = lang
-      if (lang === 'PHP') {
-        this.show_php = true
-        this.show_java = false
-        this.show_dotnet = false
-        this.show_cf = false
-      } else if (lang === 'java') {
-        this.show_php = false
-        this.show_java = true
-        this.show_dotnet = false
-        this.show_cf = false
-      } else if (lang === 'VB.NET') {
-        this.show_php = false
-        this.show_java = false
-        this.show_dotnet = true
-        this.show_cf = false
-      } else if (lang === 'ColdFusion') {
-        this.show_php = false
-        this.show_java = false
-        this.show_dotnet = false
-        this.show_cf = true
-      }
-    }
   }
 }
 </script>
