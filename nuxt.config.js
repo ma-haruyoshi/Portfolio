@@ -22,13 +22,13 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'ポートフォリオサイト' },
-      { hid: 'keyword', name: 'ポートフォリオ' },
-      { hid: 'og:type', property: 'website' },
-      { hid: 'og:title', property: 'TOP' },
-      { hid: 'og:description', property: 'ポートフォリオサイト' },
-      { hid: 'og:url', property: 'https://ma-haruyoshi-portfolio.netlify.app/' },
-      { hid: 'og:image', property: 'https://ma-haruyoshi-portfolio.netlify.app/images/prof.png' },
+      { hid: 'description', name: 'description', content: 'ポートフォリオサイト' },
+      { hid: 'keyword', name: 'keyword', content: 'ポートフォリオ' },
+      { hid: 'og:type', property: 'og:type', content:'website' },
+      { hid: 'og:title', property: 'og:title', content: 'TOP' },
+      { hid: 'og:description', property: 'og:description', content: 'ポートフォリオサイト' },
+      { hid: 'og:url', property: 'og:url', content: 'https://ma-haruyoshi-portfolio.netlify.app/' },
+      { hid: 'og:image', property: 'og:image', content: 'https://ma-haruyoshi-portfolio.netlify.app/images/prof.png' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
