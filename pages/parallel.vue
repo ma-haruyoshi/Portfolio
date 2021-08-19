@@ -56,7 +56,7 @@
                     color="white"
                     fab
                     large
-                    @click="showLang = btndata.lang"
+                    @click="skillText(showLang = btndata.lang)"
                   >
                     <div v-if="btndata.langicon" !="">
                       <v-icon>
@@ -75,11 +75,11 @@
           </v-flex>
           <v-flex xs12 sm12 md6 lg6 xl6>
             <div id="skilltext" class="discript right-3">
-              <span
-                v-for="(data,i) in itemsSkill"
+              <div
+                v-for="(data,i) in skillText(showLang)"
                 :key="i"
               >
-                <div v-if="showLang == data.lang " class="box1">
+                <div class="box1">
                   <h2 class="text-left skill">
                     <!-- タイトル -->
                     {{ data.lang }}
@@ -89,7 +89,7 @@
                     {{ data.text }}
                   </p>
                 </div>
-              </span>
+              </div>
             </div>
           </v-flex>
           <v-flex xs12 sm12 md6 lg6 xl6>
@@ -138,6 +138,11 @@ export default {
     }
   },
   methods: {
+    // 表示用データ絞り込み
+    skillText (id) {
+      // 選択した言語の情報のみに絞る
+      return this.itemsSkill.filter(x => x.lang === id)
+    }
   }
 }
 </script>
