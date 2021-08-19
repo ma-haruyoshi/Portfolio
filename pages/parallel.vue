@@ -75,7 +75,7 @@
           </v-flex>
           <v-flex xs12 sm12 md6 lg6 xl6>
             <div id="skilltext" class="discript right-3">
-              <div
+              <span
                 v-for="(data,i) in itemsSkill"
                 :key="i"
               >
@@ -89,7 +89,7 @@
                     {{ data.text }}
                   </p>
                 </div>
-              </div>
+              </span>
             </div>
           </v-flex>
           <v-flex xs12 sm12 md6 lg6 xl6>
