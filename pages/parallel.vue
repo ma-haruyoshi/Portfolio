@@ -79,7 +79,7 @@
                 v-for="(data,i) in itemsSkill"
                 :key="i"
               >
-                <div v-show="showLang == data.lang " class="box1">
+                <div v-if="showLang == data.lang " class="box1">
                   <h2 class="text-left skill">
                     <!-- タイトル -->
                     {{ data.lang }}
