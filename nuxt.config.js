@@ -44,7 +44,8 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '~/plugins/vue-scrollto'
+    '~/plugins/vue-scrollto',
+    '~/plugins/vuetify'
   ],
   /*
   ** Auto import components
@@ -114,9 +115,7 @@ export default {
         }
       }
     },
-    defaultAssets: {
-      font: false,
-    }
+    defaultAssets: false
   },
   /*
   ** Build configuration
