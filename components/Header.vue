@@ -8,28 +8,28 @@
       <a v-scroll-to="'#home'" href="#">
         <v-btn text large class="font-weight-regular">
           <v-icon left>
-            {{ iconHome }}
+            mdi-home
           </v-icon>
         </v-btn>
       </a>
       <a v-scroll-to="'#about'" href="#">
         <v-btn text large class="font-weight-regular">
           <v-icon left>
-            {{ iconAccount }}
+            mdi-account
           </v-icon>
         </v-btn>
       </a>
       <a v-scroll-to="'#skills'" href="#">
         <v-btn text large class="font-weight-regular">
           <v-icon left>
-            {{ iconDesktopClassic }}
+            mdi-monitor
           </v-icon>
         </v-btn>
       </a>
       <a v-scroll-to="'#gallaly'" href="#">
         <v-btn text large class="font-weight-regular">
           <v-icon left>
-            {{ iconCamera }}
+            mdi-camera
           </v-icon>
         </v-btn>
       </a>
@@ -37,17 +37,10 @@
   </header>
 </template>
 <script>
-import { mdiHome } from '@mdi/js'
-import { mdiAccount } from '@mdi/js'
-import { mdiDesktopClassic } from '@mdi/js'
-import { mdiCamera } from '@mdi/js'
+
 export default {
   data () {
     return {
-      iconHome: mdiHome,
-      iconAccount: mdiAccount,
-      iconDesktopClassic: mdiDesktopClassic,
-      iconCamera: mdiCamera
     }
   }
 }
