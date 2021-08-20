@@ -112,11 +112,10 @@ export default {
         light: {
           background: '#ffffff'
         }
-      },
-      defaultAssets: {
-        font: false,
-        icon: false
       }
+    },
+    defaultAssets: {
+      font: false,
     }
   },
   /*
