@@ -112,6 +112,10 @@ export default {
         light: {
           background: '#ffffff'
         }
+      },
+      defaultAssets: {
+        font: false,
+        icon: false
       }
     }
   },

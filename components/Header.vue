@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <header>
     <v-app-bar
       app
       light
@@ -8,33 +8,33 @@
       <a v-scroll-to="'#home'" href="#">
         <v-btn text large class="font-weight-regular">
           <v-icon left>
-            iconHome
+            {{ iconHome }}
           </v-icon>
         </v-btn>
       </a>
       <a v-scroll-to="'#about'" href="#">
         <v-btn text large class="font-weight-regular">
           <v-icon left>
-            iconAccount
+            {{ iconAccount }}
           </v-icon>
         </v-btn>
       </a>
       <a v-scroll-to="'#skills'" href="#">
         <v-btn text large class="font-weight-regular">
           <v-icon left>
-            mdiDesktopClassic
+            {{ iconDesktopClassic }}
           </v-icon>
         </v-btn>
       </a>
       <a v-scroll-to="'#gallaly'" href="#">
         <v-btn text large class="font-weight-regular">
           <v-icon left>
-            iconCamera
+            {{ iconCamera }}
           </v-icon>
         </v-btn>
       </a>
     </v-app-bar>
-  </div>
+  </header>
 </template>
 <script>
 import { mdiHome } from '@mdi/js'
